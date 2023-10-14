@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaJam Coffee House</title>
+    <link rel="stylesheet" href="assets/css/javajam_style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <img id="banner" src="assets/img/banner.png" alt="JavaJam Coffee House">
+        </header>
+        <div class="content-wrapper">
+            <div class="navbar">
+                <h3 style="color: rgb(46, 0, 0);">Product <br> Price <br> Update</h3>
+            </div>
+            <div class="content" id="content-index">
+                <h1>Coffee at JavaJam</h1>
+                <form action="update_prices.php" method="post" id="update-form">
+                    <table class="menu">
+                        <tr class="menu-item" id="odd">
+                            <td>
+                                <input type="checkbox" name="update_checkbox[]" value="item1">
+                            </td>
+                            <td class="drink">Just Java</td>
+                            <td class="description">
+                                Regular house blend, decaffeinated coffee, or flavor of the day.<br>
+                                <b>Endless Cup $2.00</b>
+                            </td>
+                            <td>
+                                <select name="priceitem1">
+                                    <option value="Endless Cup">Endless Cup</option>
+                                </select>
+                                <input type="text" name="new_priceitem1" placeholder="New Price" onchange="updatePrice('item1')">
+                                <input type="hidden" name="nameitem1" value="Just Java">
+                            </td>
+                            <td id="priceitem1">Price: $2.00</td>
+                        </tr>
+                        <tr class="menu-item">
+                            <td>
+                                <input type="checkbox" name="update_checkbox[]" value="item2">
+                            </td>
+                            <td class="drink">Cafe au Lait</td>
+                            <td class="description">
+                                House blended coffee infused into a smooth steamed milk.<br>
+                                <b>Single $2.00 Double $3.00</b>
+                            </td>
+                            <td>
+                                <select name="priceitem2">
+                                    <option value="Single">Single</option>
+                                    <option value="Double">Double</option>
+                                </select>
+                                <input type="text" name="new_priceitem2" placeholder="New Price" onchange="updatePrice('item2')">
+                                <input type="hidden" name="nameitem2" value="Cafe au Lait">
+                            </td>
+                            <td id="priceitem2">Price: $2.00</td>
+                        </tr>
+                        <tr class="menu-item" id="odd">
+                            <td>
+                                <input type="checkbox" name="update_checkbox[]" value="item3">
+                            </td>
+                            <td class="drink">Iced Cappuccino</td>
+                            <td class="description">
+                                Sweetened espresso blended with icy-cold milk and served in a chilled glass.<br>
+                                <b>Single $4.75 Double $5.75</b>
+                            </td>
+                            <td>
+                                <select name="priceitem3">
+                                    <option value="Single">Single</option>
+                                    <option value="Double">Double</option>
+                                </select>
+                                <input type="text" name="new_priceitem3" placeholder="New Price" onchange="updatePrice('item3')">
+                                <input type="hidden" name="nameitem3" value="Iced Cappuccino">
+                            </td>
+                            <td id="priceitem3">Price: $4.75</td>
+                        </tr>
+                    </table>
+                    <div style="text-align: right;">
+                        <input type="submit" value="Update Prices">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <div>
+                <i>Copyright &copy; 2023 JavaJam Coffee House</i>
+            </div>
+            <div>
+                <i><a href="mailto:pyae@sonekhin.com">pyae@sonekhin.com</a></i>
+            </div>
+        </footer>
+    </div>
+
+     <script>
+        function updatePrice(itemId) {
+            const newPriceInput = document.querySelector(`input[name="new_price${itemId}"]`);
+            const priceElement = document.querySelector(`#price${itemId}`);
+
+            if (newPriceInput.value !== "") {
+                const newPrice = parseFloat(newPriceInput.value).toFixed(2);
+                priceElement.innerText = `Price: $${newPrice}`;
+            }
+        }
+    </script>
+</body>
+
+</html>

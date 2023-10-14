@@ -6,6 +6,8 @@
 	<meta charset="utf-8">
 
 	<link rel="stylesheet" href="assets/css/javajam_style.css">
+	<script src="assets\js\jobsValidation.js"></script>
+
 </head>
 
 <body>
@@ -45,9 +47,9 @@
 								<label for="name">*Name:</label>
 							</td>
 							<td class="input-field">
-								<!-- <input type="text" name="name" id="name" required="1" placeholder="Enter your name here"> -->
-								<input type="text" id="name" name="name" required pattern="[A-Za-z\s]+"
-									placeholder="Enter your name here">
+								<!-- <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+"
+									placeholder="Enter your name here"> -->
+								<input type="text" id="name" name="name" placeholder="Enter your name here" required>
 							</td>
 						</tr>
 
@@ -56,19 +58,18 @@
 								<label for="email">*E-mail:</label>
 							</td>
 							<td class="input-field">
-								<!-- <input type="email" name="email" id="email" required="1" placeholder="Enter your email here"> -->
-								<input type="email" id="email" name="email" required
-									pattern="[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}">
+								<input type="text" id="email" name="email" placeholder="Enter your email" required>
+
 							</td>
 						</tr>
 
 						<tr class="contact-item">
 							<td class="item-name">
-								<label for="start-date">*Start Date:</label>
+								<label for="start-date">Start Date:</label>
 							</td>
 							<td class="input-field">
-								<!-- <input type="date" name="start-date" id="start-date"> -->
-								<input type="date" id="startDate" name="startDate" required min="2023-10-12">
+								<!-- <input type="date" id="startDate" name="startDate" required min="2023-10-19"> -->
+								<input type="date" id="startDate" name="startDate">
 							</td>
 						</tr>
 
