@@ -22,7 +22,7 @@
 				<nav>
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li><a href="menu.html" id="current">Menu</a></li>
+						<li><a href="menu2.html" id="current">Menu</a></li>
 						<li><a href="music.html">Music</a></li>
 						<li><a href="jobs.html">Jobs</a></li>
 					</ul>
@@ -31,7 +31,7 @@
 
 			<!-- Content -->
 			<div class="content" id="content-index">
-				<h1>Coffee at JavaJam</h1>
+				<h1>Coffee at JavaJam (Correct Page!!)</h1>
 
 				<table class="menu">
 					<tr class="menu-item">
@@ -49,21 +49,21 @@
 							<br>
 							<b>Endless Cup $2.00</b>
 						</td>
-						<td> <input type="number" min="0" id="javaQty" value="0"></td>
+						<td> <input type="number" min="0" id="javaQty"
+								oninput="calculateItemPrice('javaQty', 'javaPrice', 2.00)" value="0"></td>
 						<td> <input type="text" readonly id="javaPrice"></td>
 
 					</tr>
 
-					<tr class="menu-item">
+					<!-- <tr class="menu-item">
 						<td class="drink">Cafe au Lait</td>
 						<td class="description">
 							House blended coffee infused into a smooth
 							steamed milk.
 							<br>
-							<b><input type="radio" id="cafeSingle" name="cafe" value="2.00">Single $2.00 <input
-									type="radio" id="cafeDouble" name="cafe" value="3.00">Double $3.00</b>
+							<b><input type="radio" id="cafeSingle" name="cafe" value="2.00" onclick="calculateItemPrice('cafeQty', 'cafePrice', 2.00)">Single $2.00 <input type="radio" id="cafeDouble" name="cafe" value="3.00" onclick="calculateItemPrice('cafeQty', 'cafePrice', 3.00)">Double $3.00</b>
 						</td>
-						<td> <input type="number" min="0" id="cafeQty" value="0"></td>
+						<td> <input type="number" min="0" id="cafeQty" oninput="calculateItemPrice('cafeQty', 'cafePrice', 2.00)" value="0"></td>
 						<td> <input type="text" readonly id="cafePrice"></td>
 					</tr>
 
@@ -74,12 +74,41 @@
 							milk and served in a
 							chilled glass.
 							<br>
-							<b><input type="radio" id="cappSingle" name="capp" value="4.75"> Single $4.75 <input
-									type="radio" id="cappDouble" name="capp" value="5.75"> Double $5.75</b>
+							<b><input type="radio" id="cappSingle" name="capp" value="4.75" onclick="calculateItemPrice('cappQty', 'cappPrice', 4.75)"> Single $4.75 <input type="radio" id="cappDouble" name="capp" value="5.75" onclick="calculateItemPrice('cappQty', 'cappPrice', 5.75)"> Double $5.75</b>
 						</td>
-						<td> <input type="number" min="0" id="cappQty" value="0"></td>
+						<td> <input type="number" min="0" id="cappQty" oninput="calculateItemPrice('cappQty', 'cappPrice', 4.75)" value="0"></td>
+						<td> <input type="text" readonly id="cappPrice"></td>
+					</tr> -->
+
+					<tr class="menu-item">
+						<td class="drink">Cafe au Lait</td>
+						<td class="description">
+							House blended coffee infused into a smooth steamed milk.
+							<br>
+							<b><input type="radio" id="cafeSingle" name="cafe" value="2.00"
+									onclick="calculateItemPrice('cafeQty', 'cafePrice', 2.00)">Single $2.00</b>
+							<b><input type="radio" id="cafeDouble" name="cafe" value="3.00"
+									onclick="calculateItemPrice('cafeQty', 'cafePrice', 3.00)">Double $3.00</b>
+						</td>
+						<td> <input type="number" min="0" id="cafeQty"
+								oninput="calculateItemPrice('cafeQty', 'cafePrice', 2.00)" value="0"></td>
+						<td> <input type="text" readonly id="cafePrice"></td>
+					</tr>
+					<tr class="menu-item" id="odd">
+						<td class="drink">Iced Cappuccino</td>
+						<td class="description">
+							Sweetened espresso blended with icy-cold milk and served in a chilled glass.
+							<br>
+							<b><input type="radio" id="cappSingle" name="capp" value="4.75"
+									onclick="calculateItemPrice('cappQty', 'cappPrice', 4.75)"> Single $4.75</b>
+							<b><input type="radio" id="cappDouble" name="capp" value="5.75"
+									onclick="calculateItemPrice('cappQty', 'cappPrice', 5.75)"> Double $5.75</b>
+						</td>
+						<td> <input type="number" min="0" id="cappQty"
+								oninput="calculateItemPrice('cappQty', 'cappPrice', 4.75)" value="0"></td>
 						<td> <input type="text" readonly id="cappPrice"></td>
 					</tr>
+
 
 					<tr class="menu-item">
 						<td></td>
@@ -105,35 +134,50 @@
 
 	</div>
 	<script>
-		document.getElementById("javaQty").addEventListener("input", calculateTotalPrice);
-		document.getElementById("cafeQty").addEventListener("input", calculateTotalPrice);
-		document.getElementById("cappQty").addEventListener("input", calculateTotalPrice);
+		// function calculateItemPrice(qtyId, priceId, unitPrice) {
 
-		function calculateTotalPrice() {
-			// Get the input values for each item
-			var javaQty = parseFloat(document.getElementById("javaQty").value);
-			var javaPrice = 2;
+		// 	var quantity = parseFloat(document.getElementById(qtyId).value) || 0;
 
-			var cafeQty = parseFloat(document.getElementById("cafeQty").value);
-			var cafePrice = parseFloat(document.querySelector('input[name="cafe"]:checked').value);
 
-			var cappQty = parseFloat(document.getElementById("cappQty").value);
-			var cappPrice = parseFloat(document.querySelector('input[name="capp"]:checked').value);
+		// 	var itemPrice = quantity * unitPrice;
 
-			// Calculate the total price for each item
-			var totalJavaPrice = javaQty * javaPrice;
-			document.getElementById("javaPrice").value = "$" + totalJavaPrice.toFixed(2);
 
-			var totalCafePrice = cafeQty * cafePrice;
-			document.getElementById("cafePrice").value = "$" + totalCafePrice.toFixed(2);
+		// 	document.getElementById(priceId).value = "$" + itemPrice.toFixed(2);
 
-			var totalCappPrice = cappQty * cappPrice;
-			document.getElementById("cappPrice").value = "$" + totalCappPrice.toFixed(2);
+
+		// 	var javaPrice = parseFloat(document.getElementById('javaPrice').value.replace("$", "")) || 0;
+		// 	var cafePrice = parseFloat(document.getElementById('cafePrice').value.replace("$", "")) || 0;
+		// 	var cappPrice = parseFloat(document.getElementById('cappPrice').value.replace("$", "")) || 0;
+		// 	var overallTotalPrice = javaPrice + cafePrice + cappPrice;
+
+		// 	document.getElementById("totalPrice").value = "$" + overallTotalPrice.toFixed(2);
+		// }
+
+		function calculateItemPrice(qtyId, priceId, unitPrice) {
+			// Get the input values for quantity
+			var quantity = parseFloat(document.getElementById(qtyId).value) || 0;
+
+			// Calculate the item price based on the selected radio button
+			var radioName = qtyId === 'cafeQty' ? 'cafe' : 'capp';
+			var selectedRadio = document.querySelector(`input[name="${radioName}"]:checked`);
+			if (selectedRadio) {
+				unitPrice = parseFloat(selectedRadio.value);
+			}
+			var itemPrice = quantity * unitPrice;
+
+			// Update the item price input field
+			document.getElementById(priceId).value = "$" + itemPrice.toFixed(2);
 
 			// Calculate the overall total price
-			var overallTotalPrice = totalJavaPrice + totalCafePrice + totalCappPrice;
+			var javaPrice = parseFloat(document.getElementById('javaPrice').value.replace("$", "")) || 0;
+			var cafePrice = parseFloat(document.getElementById('cafePrice').value.replace("$", "")) || 0;
+			var cappPrice = parseFloat(document.getElementById('cappPrice').value.replace("$", "")) || 0;
+			var overallTotalPrice = javaPrice + cafePrice + cappPrice;
+
+			// Update the total price input field
 			document.getElementById("totalPrice").value = "$" + overallTotalPrice.toFixed(2);
 		}
+
 	</script>
 </body>
 
