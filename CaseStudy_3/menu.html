@@ -134,28 +134,16 @@
 
 	</div>
 	<script>
-		// function calculateItemPrice(qtyId, priceId, unitPrice) {
-
-		// 	var quantity = parseFloat(document.getElementById(qtyId).value) || 0;
-
-
-		// 	var itemPrice = quantity * unitPrice;
-
-
-		// 	document.getElementById(priceId).value = "$" + itemPrice.toFixed(2);
-
-
-		// 	var javaPrice = parseFloat(document.getElementById('javaPrice').value.replace("$", "")) || 0;
-		// 	var cafePrice = parseFloat(document.getElementById('cafePrice').value.replace("$", "")) || 0;
-		// 	var cappPrice = parseFloat(document.getElementById('cappPrice').value.replace("$", "")) || 0;
-		// 	var overallTotalPrice = javaPrice + cafePrice + cappPrice;
-
-		// 	document.getElementById("totalPrice").value = "$" + overallTotalPrice.toFixed(2);
-		// }
 
 		function calculateItemPrice(qtyId, priceId, unitPrice) {
 			// Get the input values for quantity
 			var quantity = parseFloat(document.getElementById(qtyId).value) || 0;
+
+			// Ensure the quantity is not negative
+			if (quantity < 0) {
+				quantity = 0; // Set it to zero to prevent negative values
+				document.getElementById(qtyId).value = "0";
+			}
 
 			// Calculate the item price based on the selected radio button
 			var radioName = qtyId === 'cafeQty' ? 'cafe' : 'capp';
