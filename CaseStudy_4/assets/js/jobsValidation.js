@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const emailPattern = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
 
 		if (!emailPattern.test(emailValue)) {
-			alert("Invalid email format");
+			alert("Invalid email format. Please make sure it contains a user name part follows by “@” and a domain name part.");
 			event.preventDefault();
 		}
 
