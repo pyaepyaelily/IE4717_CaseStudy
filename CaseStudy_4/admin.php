@@ -36,10 +36,20 @@
                         $rowCAL = mysqli_fetch_assoc($resultCAL);
                         $priceCAL = $rowCAL['price'];
 
+                        $queryCALD = "SELECT price FROM menu WHERE name = 'Cafe au Lait' and type = 'Double' ";
+                        $resultCALD = mysqli_query($conn, $queryCALD);
+                        $rowCALD = mysqli_fetch_assoc($resultCALD);
+                        $priceCALD = $rowCALD['price'];
+
                         $queryIC = "SELECT price FROM menu WHERE name = 'Iced Cappuccino'";
                         $resultIC = mysqli_query($conn, $queryIC);
                         $rowIC = mysqli_fetch_assoc($resultIC);
                         $priceIC = $rowIC['price'];
+
+                        $queryICD = "SELECT price FROM menu WHERE name = 'Iced Cappuccino' and type = 'Double'";
+                        $resultICD = mysqli_query($conn, $queryICD);
+                        $rowICD = mysqli_fetch_assoc($resultIC);
+                        $priceICD = $rowICD['price'];
                         
                         ?>
                         <tr class="menu-item" id="odd">
@@ -68,7 +78,7 @@
                             <td class="drink">Cafe au Lait</td>
                             <td class="description">
                                 House blended coffee infused into a smooth steamed milk.<br>
-                                <b>Single $<?= $priceCAL ?> Double $<?= $priceCAL ?></b>
+                                <b>Single $<?= $priceCAL ?> Double $<?= $priceCALD ?></b>
                             </td>
                             <td>
                                 <select name="priceitem2">
@@ -88,7 +98,7 @@
                             <td class="drink">Iced Cappuccino</td>
                             <td class="description">
                                 Sweetened espresso blended with icy-cold milk and served in a chilled glass.<br>
-                                <b>Single $<?= $priceIC ?> Double $<?= $priceIC ?></b>
+                                <b>Single $<?= $priceIC ?> Double $<?= $priceICD ?></b>
                             </td>
                             <td>
                                 <select name="priceitem3">
